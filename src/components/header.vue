@@ -1,25 +1,39 @@
 <template>
-    <div class="row">
-        <img class="logo" src="../assets/logo.png" alt="">
-            <div class="left-side">
-            <router-link to="/home"><h1>GOLDEN LEAVES</h1></router-link>
-            </div>
-            <div class="right-side">
-            <ul>
-              <li><router-link to="/buying" exact><q-btn style="background: goldenrod; color: white" label="Buy now"></q-btn></router-link></li>
-              <li><router-link to="/selling" exact><q-btn style="background: goldenrod; color: white" label="Sell"></q-btn></router-link></li>
-            </ul>
-            <form>
-                <label>
-                  <q-input class="searchbox" dark borderless value="">
-                    <template v-slot:append>
-                      <q-icon name="search" />
-                    </template>
-                  </q-input>
-                </label>
-            </form>
-            </div>
+  <div class="row main full-width justify-between ">
+
+    <div class="main-left q-pa-md">
+      <div class="row">
+        <div class="items-center row">
+          <q-avatar class="avatar" size="lg">
+            <img class="logo items-center" src="../assets/logo.png" alt="">
+          </q-avatar>
+          <h1 @click="$router.push('/home')" class="col">GOLDEN LEAVES</h1>
         </div>
+      </div>
+    </div>
+
+    <div class="row q-pa-sm wrap items-center">
+      <ul class="row">
+        <li>
+          <q-btn @click="$router.push('/buying')" style="overflow: auto; background: goldenrod; color: white"
+                 label="Buy now"></q-btn>
+        </li>
+        <li>
+          <q-btn @click="$router.push('/selling')" style="overflow: auto; background: goldenrod; color: white"
+                 label="Sell"></q-btn>
+        </li>
+      </ul>
+      <form class="row">
+        <q-input class="search-bar items-center fit" dark borderless value="">
+          <template v-slot:append>
+            <q-icon name="search"/>
+          </template>
+        </q-input>
+      </form>
+      <q-btn flat round dense icon="menu" class="q-mr-sm"/>
+    </div>
+
+  </div>
 </template>
 
 <script>
@@ -35,47 +49,65 @@ export default {
 </script>
 
 <style scoped>
-    .row {
-        font-family: 'Lato', sans-serif;
-        font-size: 20px;
-        color: white;
-        background-color: #262626;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .right-side {
-        display: flex;
-        margin-left: auto;
-    }
-    ul {
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
-        text-decoration: none;
+.main {
+  font-family: 'Lato', sans-serif;
+  font-size: 20px;
+  color: white;
+  background-color: #262626;
+  min-width: 320px;
+}
 
-    }
-    li {
-        float: left;
-        margin-right: 1rem;
-    }
-    li:hover, :visited, :link, :active {
-        text-decoration: none;
-        color: white;
-    }
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
 
-    .left-side{
-        display: flex;
-        align-items: center
-    }
-    h1 {
-        padding-left: .5rem;
-        font-size: 30px;
-        margin: 0;
-    }
-    .logo {
-        height: 2rem;
-        width: 2rem;
-    }
+li {
+  margin-right: 1rem;
+}
 
+li:hover, :visited, :link, :active {
+  text-decoration: none;
+  color: white;
+}
+
+.main-left {
+  margin-left: 1rem;
+  padding: 0;
+
+}
+
+h1 {
+  font-size: 30px;
+  margin: 0;
+}
+
+@media only screen and (max-width: 800px) {
+  li, form {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .q-mr-sm {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 365px) {
+  .avatar {
+    display: none;
+  }
+}
+
+.search-bar {
+  padding-left: 1em;
+  margin-right: 1em;
+  text-transform: uppercase;
+}
+
+.avatar {
+  margin-right: 0.5rem;
+}
 </style>
